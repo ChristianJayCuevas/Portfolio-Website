@@ -1,4 +1,15 @@
 <script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 </script>
@@ -31,17 +42,26 @@ import { Head } from '@inertiajs/vue3';
                 </li>
                 <li>
                     <span class="info">
-                        <i class='bx bx-devices'></i>
+                        <i class='bx bx-user'></i>
                         <h3>
-                            Technical Skills 
+                            Introduction 
                         </h3>
                     </span>
-                    <p>><strong> Front-End Web Development</strong> (VueJS, HTML, CSS)</p>
+                    <p>I am Christian Jay Cuevas, you can call just call me Jay. I am a computer engineering student with 
+                        a passion for web development, and <strong>my main stack is Laravel (Back-End) and VueJS (Front-End) </strong>. I am also
+                        an avid novel reader (xianxia in particular) and a fan of anime. I also listen to a wide variety of music genres. I also play a lot of games,
+                        and own nintendo switch, psp, and ds. 
+                        <br><br>
+                        My greatest strength is my <strong>adaptability</strong> and <strong>ability to learn new things</strong>. I am also a team player, always willing to
+                        collaborate with my team members to achieve our goals. My ultimate goal in life is to achieve the calm and peace in any situation
+                        I face.
+                    </p>
+                    <!-- <p>><strong> Front-End Web Development</strong> (VueJS, HTML, CSS)</p>
                     <p>><strong> Back-End Web Development</strong> (Laravel, PHP, MySQL)</p>
                     <p>><strong> Mobile App Development</strong> (JS, React Native, MySQL)</p>
                     <p>><strong> Networking and Security</strong> (Routing & Switching, Troubleshooting)</p>
                     <p>><strong> Web DevOps</strong> (CI/CD Pipeline using workflow, Git, LEMP Stack deployment)</p>
-                    <p>><strong> Machine & Deep Learning</strong> (Python, Data Preprocessing, Model Training, Computer Vision)</p>
+                    <p>><strong> Machine & Deep Learning</strong> (Python, Data Preprocessing, Model Training, Computer Vision)</p> -->
                 </li>
                 <li>
                     <span class="info">
@@ -57,7 +77,6 @@ import { Head } from '@inertiajs/vue3';
                     <p>><strong> Adaptability</strong></p>
                     <p>><strong> Critical Thinking</strong></p>
                     <p>><strong> Fast Learner</strong></p>
-                    <p>><strong> Work Ethic</strong></p>
                     <p>><strong> Attention to Detail</strong></p>
                 </li>
             </ul>
@@ -86,31 +105,121 @@ import { Head } from '@inertiajs/vue3';
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="images/profile-1.jpg">
-                                    <p>John Doe</p>
+                                    <img src="/storage/images/TIP.png">
+                                    <p>President's Lister</p>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td>12-15-2022</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="images/profile-1.jpg">
-                                    <p>John Doe</p>
+                                    <img src="/storage/images/TIP.png">
+                                    <p>President's Lister</p>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td>2-16-2023</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="images/profile-1.jpg">
-                                    <p>John Doe</p>
+                                    <img src="/storage/images/TIP.png">
+                                    <p>VPAA Lister</p>
                                 </td>
-                                <td>14-08-2023</td>
+                                <td>8-14-2023</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/storage/images/TIP.png">
+                                    <p>President's Lister</p>
+                                </td>
+                                <td>3-20-2024</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/storage/images/cisco logo.png">
+                                    <p>Cisco Netriders Bronze</p>
+                                </td>
+                                <td>3-26-2024</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/storage/images/TIP.png">
+                                    <p>VPAA Lister</p>
+                                </td>
+                                <td>6-5-2024</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/storage/images/TIP.png">
+                                    <p>VPAA Lister</p>
+                                </td>
+                                <td>11-6-2024</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/storage/images/icpep-logo.png">
+                                    <p>CPE Challenge Quiz Bee Participant</p>
+                                </td>
+                                <td>12-6-2024</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <!-- Reminders -->
-                <div class="reminders">
+             <div class="music-recommendations">
+    <div class="header">
+      <i class="bx bx-music"></i>
+      <h3>Music Recommendations</h3>
+    </div>
+    <Swiper
+      :spaceBetween="30"
+      :centeredSlides="true"
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+      }"
+      :pagination="{
+        clickable: true
+      }"
+      :navigation="true"
+      :modules="[Autoplay, Pagination, Navigation]"
+    >
+      <!-- Slide 1 -->
+      <SwiperSlide>
+        <div class="music-card">
+          <img class="album-cover" src="/storage/images/TRON.jpg" alt="Shoegazer Album">
+          <div class="music-info">
+            <h4>Music Genre: Shoegazer</h4>
+            <h5>Title: Bohemian Rhapsody</h5>
+            <a href="https://www.youtube.com/watch?v=2KucYrac4CQ" target="_blank">Watch Music Video</a>
+          </div>
+        </div>
+      </SwiperSlide>
+
+      <!-- Slide 2 -->
+      <SwiperSlide>
+        <div class="music-card">
+          <img class="album-cover" src="/storage/images/Natsuno Yoruno Machi.jpg" alt="JPOP Album">
+          <div class="music-info">
+            <h4>Music Genre: JPOP</h4>
+            <h5>Title: Natsuno Yoruno Machi</h5>
+            <a href="https://youtu.be/OkC_7Coj3Rw" target="_blank">Watch Music Video</a>
+          </div>
+        </div>
+      </SwiperSlide>
+
+      <!-- Slide 3 -->
+      <SwiperSlide>
+        <div class="music-card">
+          <img class="album-cover" src="/storage/images/One good reason.jpg" alt="Metal Album">
+          <div class="music-info">
+            <h4>Music Genre: Metal</h4>
+            <h5>Title: Shapeshifter</h5>
+            <a href="https://youtu.be/kRrOq4NipQQ" target="_blank">Watch Music Video</a>
+          </div>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
+                <!-- <div class="reminders">
                     <div class="header">
                         <i class='bx bx-note'></i>
                         <h3>Remiders</h3>
@@ -140,8 +249,73 @@ import { Head } from '@inertiajs/vue3';
                             <i class='bx bx-dots-vertical-rounded'></i>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </main>
     </AuthenticatedLayout>
 </template>
+<style scoped>
+.album-cover {
+  width: 500px;
+  height: 450px;
+  border-radius: 16px;
+
+}
+.music-recommendations {
+    flex-grow: 1;
+    flex-basis: 200px;
+    box-shadow: var(--box-shadow);
+}
+.music-recommendations:hover{
+    transition: 0.3s ease;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.music-card h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.music-card p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.music-card a {
+    text-decoration: none;
+    color: #1e88e5;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.music-card a:hover {
+    text-decoration: underline;
+}
+
+.swiper {
+  width: 100%;
+  height: 90%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+ 
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+::v-deep(.swiper-pagination) {
+    pointer-events: all !important;
+}
+</style>
