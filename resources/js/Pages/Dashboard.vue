@@ -177,7 +177,6 @@ import { Head } from '@inertiajs/vue3';
                         :pagination="{clickable: true}" 
                         :navigation="true" 
                         :modules="[Autoplay, Pagination, Navigation]">
-                        <!-- Slide 1 -->
                         <SwiperSlide>
                             <div class="music-card">
                                 <img class="album-cover" src="/storage/images/TRON.jpg" alt="Shoegazer Album">
@@ -189,8 +188,6 @@ import { Head } from '@inertiajs/vue3';
                                 </div>
                             </div>
                         </SwiperSlide>
-
-                        <!-- Slide 2 -->
                         <SwiperSlide>
                             <div class="music-card">
                                 <img class="album-cover" src="/storage/images/Natsuno Yoruno Machi.jpg"
@@ -202,8 +199,6 @@ import { Head } from '@inertiajs/vue3';
                                 </div>
                             </div>
                         </SwiperSlide>
-
-                        <!-- Slide 3 -->
                         <SwiperSlide>
                             <div class="music-card">
                                 <img class="album-cover" src="/storage/images/One good reason.jpg" alt="Metal Album">
@@ -216,37 +211,6 @@ import { Head } from '@inertiajs/vue3';
                         </SwiperSlide>
                     </Swiper>
                 </div>
-                <!-- <div class="reminders">
-                    <div class="header">
-                        <i class='bx bx-note'></i>
-                        <h3>Remiders</h3>
-                        <i class='bx bx-filter'></i>
-                        <i class='bx bx-plus'></i>
-                    </div>
-                    <ul class="task-list">
-                        <li class="completed">
-                            <div class="task-title">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Start Our Meeting</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <div class="task-title">
-                                <i class='bx bx-check-circle'></i>
-                                <p>Analyse Our Site</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <div class="task-title">
-                                <i class='bx bx-x-circle'></i>
-                                <p>Play Footbal</p>
-                            </div>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                    </ul>
-                </div> -->
             </div>
         </main>
     </AuthenticatedLayout>

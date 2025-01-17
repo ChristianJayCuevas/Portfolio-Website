@@ -52,7 +52,6 @@ jobs:
           username: ${{ secrets.DO_USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script_stop: true
           script: |
             sudo git config --global --add safe.directory /var/www/Portfolio-Website
             cd /var/www/Portfolio-Website
