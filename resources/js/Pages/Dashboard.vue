@@ -1,6 +1,6 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
+import '../../css/main.css'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
