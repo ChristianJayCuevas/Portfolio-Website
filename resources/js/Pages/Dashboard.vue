@@ -1,20 +1,17 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
-// Import Swiper styles
 import 'swiper/css';
-
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-// import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 </script>
 
 <template>
+
     <Head title="Dashboard" />
 
     <AuthenticatedLayout>
@@ -44,16 +41,21 @@ import { Head } from '@inertiajs/vue3';
                     <span class="info">
                         <i class='bx bx-user'></i>
                         <h3>
-                            Introduction 
+                            Introduction
                         </h3>
                     </span>
-                    <p>I am Christian Jay Cuevas, you can call just call me Jay. I am a computer engineering student with 
-                        a passion for web development, and <strong>my main stack is Laravel (Back-End) and VueJS (Front-End) </strong>. I am also
-                        an avid novel reader (xianxia in particular) and a fan of anime. I also listen to a wide variety of music genres. I also play a lot of games,
-                        and own nintendo switch, psp, and ds. 
+                    <p>I am Christian Jay Cuevas, you can call just call me Jay. I am a computer engineering student
+                        with
+                        a passion for web development, and <strong>my main stack is Laravel (Back-End) and VueJS
+                            (Front-End) </strong>. I am also
+                        an avid novel reader (xianxia in particular) and a fan of anime. I also listen to a wide variety
+                        of music genres. I also play a lot of games,
+                        and own nintendo switch, psp, and ds.
                         <br><br>
-                        My greatest strength is my <strong>adaptability</strong> and <strong>ability to learn new things</strong>. I am also a team player, always willing to
-                        collaborate with my team members to achieve our goals. My ultimate goal in life is to achieve the calm and peace in any situation
+                        My greatest strength is my <strong>adaptability</strong> and <strong>ability to learn new
+                            things</strong>. I am also a team player, always willing to
+                        collaborate with my team members to achieve our goals. My ultimate goal in life is to achieve
+                        the calm and peace in any situation
                         I face.
                     </p>
                     <!-- <p>><strong> Front-End Web Development</strong> (VueJS, HTML, CSS)</p>
@@ -164,61 +166,56 @@ import { Head } from '@inertiajs/vue3';
                 </div>
 
                 <!-- Reminders -->
-             <div class="music-recommendations">
-    <div class="header">
-      <i class="bx bx-music"></i>
-      <h3>Music Recommendations</h3>
-    </div>
-    <Swiper
-      :spaceBetween="30"
-      :centeredSlides="true"
-      :autoplay="{
-        delay: 2500,
-        disableOnInteraction: false,
-      }"
-      :pagination="{
-        clickable: true
-      }"
-      :navigation="true"
-      :modules="[Autoplay, Pagination, Navigation]"
-    >
-      <!-- Slide 1 -->
-      <SwiperSlide>
-        <div class="music-card">
-          <img class="album-cover" src="/storage/images/TRON.jpg" alt="Shoegazer Album">
-          <div class="music-info">
-            <h4>Music Genre: Shoegazer</h4>
-            <h5>Title: Bohemian Rhapsody</h5>
-            <a href="https://www.youtube.com/watch?v=2KucYrac4CQ" target="_blank">Watch Music Video</a>
-          </div>
-        </div>
-      </SwiperSlide>
+                <div class="music-recommendations">
+                    <div class="header">
+                        <i class="bx bx-music"></i>
+                        <h3>Music Recommendations</h3>
+                    </div>
+                    <Swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{
+                        delay: 2500,
+                        disableOnInteraction: false,}" 
+                        :pagination="{clickable: true}" 
+                        :navigation="true" 
+                        :modules="[Autoplay, Pagination, Navigation]">
+                        <!-- Slide 1 -->
+                        <SwiperSlide>
+                            <div class="music-card">
+                                <img class="album-cover" src="/storage/images/TRON.jpg" alt="Shoegazer Album">
+                                <div class="music-info">
+                                    <h4>Music Genre: Shoegazer</h4>
+                                    <h5>Title: Bohemian Rhapsody</h5>
+                                    <a href="https://www.youtube.com/watch?v=2KucYrac4CQ" target="_blank">Watch Music
+                                        Video</a>
+                                </div>
+                            </div>
+                        </SwiperSlide>
 
-      <!-- Slide 2 -->
-      <SwiperSlide>
-        <div class="music-card">
-          <img class="album-cover" src="/storage/images/Natsuno Yoruno Machi.jpg" alt="JPOP Album">
-          <div class="music-info">
-            <h4>Music Genre: JPOP</h4>
-            <h5>Title: Natsuno Yoruno Machi</h5>
-            <a href="https://youtu.be/OkC_7Coj3Rw" target="_blank">Watch Music Video</a>
-          </div>
-        </div>
-      </SwiperSlide>
+                        <!-- Slide 2 -->
+                        <SwiperSlide>
+                            <div class="music-card">
+                                <img class="album-cover" src="/storage/images/Natsuno Yoruno Machi.jpg"
+                                    alt="JPOP Album">
+                                <div class="music-info">
+                                    <h4>Music Genre: JPOP</h4>
+                                    <h5>Title: Natsuno Yoruno Machi</h5>
+                                    <a href="https://youtu.be/OkC_7Coj3Rw" target="_blank">Watch Music Video</a>
+                                </div>
+                            </div>
+                        </SwiperSlide>
 
-      <!-- Slide 3 -->
-      <SwiperSlide>
-        <div class="music-card">
-          <img class="album-cover" src="/storage/images/One good reason.jpg" alt="Metal Album">
-          <div class="music-info">
-            <h4>Music Genre: Metal</h4>
-            <h5>Title: Shapeshifter</h5>
-            <a href="https://youtu.be/kRrOq4NipQQ" target="_blank">Watch Music Video</a>
-          </div>
-        </div>
-      </SwiperSlide>
-    </Swiper>
-  </div>
+                        <!-- Slide 3 -->
+                        <SwiperSlide>
+                            <div class="music-card">
+                                <img class="album-cover" src="/storage/images/One good reason.jpg" alt="Metal Album">
+                                <div class="music-info">
+                                    <h4>Music Genre: Metal</h4>
+                                    <h5>Title: Shapeshifter</h5>
+                                    <a href="https://youtu.be/kRrOq4NipQQ" target="_blank">Watch Music Video</a>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
                 <!-- <div class="reminders">
                     <div class="header">
                         <i class='bx bx-note'></i>
@@ -256,17 +253,19 @@ import { Head } from '@inertiajs/vue3';
 </template>
 <style scoped>
 .album-cover {
-  width: 500px;
-  height: 450px;
-  border-radius: 16px;
+    width: 500px;
+    height: 450px;
+    border-radius: 16px;
 
 }
+
 .music-recommendations {
     flex-grow: 1;
     flex-basis: 200px;
     box-shadow: var(--box-shadow);
 }
-.music-recommendations:hover{
+
+.music-recommendations:hover {
     transition: 0.3s ease;
     box-shadow: none;
     cursor: pointer;
@@ -290,7 +289,7 @@ import { Head } from '@inertiajs/vue3';
     font-weight: bold;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 }
 
 .music-card a:hover {
@@ -298,19 +297,19 @@ import { Head } from '@inertiajs/vue3';
 }
 
 .swiper {
-  width: 100%;
-  height: 90%;
+    width: 100%;
+    height: 90%;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
- 
+    text-align: center;
+    font-size: 18px;
 
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
