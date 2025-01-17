@@ -213,6 +213,7 @@ import { Head } from '@inertiajs/vue3';
                 </div>
             </div>
         </main>
+        <!--Comment-->
     </AuthenticatedLayout>
 </template>
 <style scoped>
