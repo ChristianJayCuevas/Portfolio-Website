@@ -18,9 +18,9 @@ import { Head } from '@inertiajs/vue3';
         <main>
             <div class="header">
                 <div class="left">
-                    <h1>Hi! Welcome to my Portfolio</h1>
+                    <h1>Hi! Nice to meet you</h1>
                 </div>
-                <a href="#" class="report">
+                <a href="https://christianjaycuevas.tech/storage/files/My%20Resume.pdf" class="report">
                     <i class='bx bx-cloud-download'></i>
                     <span>Download Resume / CV</span>
                 </a>
@@ -88,7 +88,7 @@ import { Head } from '@inertiajs/vue3';
                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-receipt'></i>
-                        <h3>Certificates and Awards</h3>
+                        <h3>Certificates & Awards</h3>
                     </div>
                     <table>
                         <thead>
@@ -181,8 +181,8 @@ import { Head } from '@inertiajs/vue3';
                             <div class="music-card">
                                 <img class="album-cover" src="/storage/images/TRON.jpg" alt="Shoegazer Album">
                                 <div class="music-info">
-                                    <h4>Music Genre: Shoegazer</h4>
-                                    <h5>Title: Bohemian Rhapsody</h5>
+                                    <h4>Music Genre: Shoegaze</h4>
+                                    <h5>Title: Veranda</h5>
                                     <a href="https://www.youtube.com/watch?v=2KucYrac4CQ" target="_blank">Watch Music
                                         Video</a>
                                 </div>
@@ -216,10 +216,10 @@ import { Head } from '@inertiajs/vue3';
         <!--Comment-->
     </AuthenticatedLayout>
 </template>
-<style scoped>
+<style>
 .album-cover {
     width: 500px;
-    height: 450px;
+    height: 400px;
     border-radius: 16px;
 
 }
@@ -235,6 +235,13 @@ import { Head } from '@inertiajs/vue3';
     box-shadow: none;
     cursor: pointer;
 }
+
+.music-card h3 {
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 .music-card h4 {
     margin-bottom: 10px;
