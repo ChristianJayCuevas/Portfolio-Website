@@ -44,7 +44,7 @@ import { Head } from '@inertiajs/vue3';
                             Introduction
                         </h3>
                     </span>
-                    <p>I am Christian Jay Cuevas, you can call just call me Jay. I am a computer engineering student
+                    <p>I am Christian Jay Cuevas, you can just call me Jay. I am a computer engineering student
                         with
                         a passion for web development, and <strong>my main stack is Laravel (Back-End) and VueJS
                             (Front-End) </strong>. I am also
