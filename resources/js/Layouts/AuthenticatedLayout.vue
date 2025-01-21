@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
       <div class="sidebar" :class="{ close: isSidebarClosed }">
         <a href="#" class="logo">
@@ -30,7 +30,7 @@
   
   <script setup>
   import { ref, onMounted, watch, onBeforeUnmount } from 'vue';
-  import { Link as InertiaLink, usePage } from '@inertiajs/vue3'; // Import Inertia Link and usePage hook
+  import { Link as InertiaLink, usePage } from '@inertiajs/vue3'; 
   
   const isSidebarClosed = ref(false);
   const isDarkMode = ref(false);
@@ -76,4 +76,4 @@
     window.removeEventListener("resize", handleResize);
   });
   </script>
-  
+   -->
