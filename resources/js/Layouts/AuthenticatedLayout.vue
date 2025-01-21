@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div>
       <div class="sidebar" :class="{ close: isSidebarClosed }">
         <a href="#" class="logo">
@@ -76,4 +76,4 @@
     window.removeEventListener("resize", handleResize);
   });
   </script>
-   -->
+  
