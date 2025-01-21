@@ -541,7 +541,7 @@ function showGetInTouchPopup() {
     title: "Get in Touch",
     html: `
       <p>If you'd like to contact me, feel free to send an email:</p>
-      <a href="mailto:christianjaycuevas@gmail.com" class="swal2-link">your_email@example.com</a>
+      <a href="mailto:christianjaycuevas@gmail.com" class="swal2-link">christianjaycuevas@gmail.com</a>
     `,
     icon: "info",
     confirmButtonText: "Close",
