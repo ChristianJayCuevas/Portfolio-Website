@@ -308,7 +308,7 @@ import { Head } from '@inertiajs/vue3';
                 <p>
                     Computer Engineering Student | Passionate Web Developer Exploring Laravel & VueJS | Anime & Novel 
                 </p>
-                <button>Get In Touch</button>
+                <button @click="showGetInTouchPopup">Get In Touch</button>
             </div>
             <div class="right">
                 <img src="/storage/images/Profile2.jpg">
@@ -534,7 +534,23 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Head } from '@inertiajs/vue3';
 import '../../css/new.css'
+import Swal from "sweetalert2";
 
+function showGetInTouchPopup() {
+  Swal.fire({
+    title: "Get in Touch",
+    html: `
+      <p>If you'd like to contact me, feel free to send an email:</p>
+      <a href="mailto:christianjaycuevas@gmail.com" class="swal2-link">your_email@example.com</a>
+    `,
+    icon: "info",
+    confirmButtonText: "Close",
+    showCloseButton: true,
+    customClass: {
+      confirmButton: "swal2-confirm",
+    },
+  });
+}
 const isMenuOpen = ref(false);
 
 function toggleMenu() {
