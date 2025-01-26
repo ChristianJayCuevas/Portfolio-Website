@@ -284,6 +284,7 @@ import { Head } from '@inertiajs/vue3';
 <template>
 
     <body>
+        <Head title="Welcome" />
         <nav :class="{ open: isMenuOpen }">
             <a href="#" class="logo">
                 <i class="bx bx-code-alt"></i>
