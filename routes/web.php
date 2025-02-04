@@ -9,6 +9,10 @@ Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::get('/pokemon', function () {
+    return Inertia::render('PokemonHome');
+})->name('pokemon');
+
 // Route::get('/projects', function () {
 //     return Inertia::render('Projects');
 // })->name('projects');

@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --background-color: #e7f0f7;
+    --card-color: #edf5f8;
+    --blue-color: #458ae6;
+    --dark-color: #d7e5f0;
+    --text-color: #20282a;
+    --box-shadow: 13px 9px 18px 7px rgba(194,206,218,0.68);
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 13rem auto 13rem;
+
+}
+
+.container .visible .logo img{
+    width: 10rem;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+aside{
+    height: 100vh;
+
+}
+
+aside .sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 1rem;
+    height: 80vh;
+    position: relative;
+    top: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar:hover{
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar .ball{
+    width: 2rem;
+}
+aside .sidebar a{
+    display: flex;
+    align-items: center;
+    color: var(--color-white);
+    height: 3.7rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 1.4rem;
+    transition: color 0.3s ease, margin-left 0.3s ease;
+}
+
+aside .sidebar a span{
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:hover{
+    color: var(--blue-color);
+}
+aside .sidebar a img {
+    transition: margin-left 0.3s ease; /* Ensures smooth return */
+}
+aside .sidebar a:hover img{
+    margin-left: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a:hover span{
+    margin-left: 0.6rem;
+    transition: all 0.3s ease;
+}
+aside .sidebar .active-top{
+    width: 100%;
+    color: var(--blue-color);
+    background: var(--dark-color);
+    border-radius: 15px 15px 0 0;
+    margin: 0;
+
+}
+aside .sidebar a.active-top::before{
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--blue-color);
+}
+aside .sidebar a span{
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+main{
+    margin-top: 0.4rem;
+}
+
+main .pokemon-card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+    margin-top:6rem;
+    justify-content: center;
+    align-items: center;
+}
+
+main .pokemon-card > div {
+    display:flex;
+    flex-direction: column;
+    background-color: var(--card-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.4rem;
+}
+
+main .pokemon-card .pokemon-image{
+    display:flex;
+    top: -80px;
+    position: relative;
+    width: 150px;  
+    height:auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+  
+}
+
+main .pokemon-card > div:hover .pokemon-image {
+    transform: scale(1.2) translateY(-10px); 
+}
+
+main .pokemon-card > div:hover{
+    transform: scale(1.05) translateY(-5px); 
+}
+
+main .pokemon-card .pokemon-number{
+    top: -70px;
+    position: relative;
+}
+
+main .pokemon-card .pokemon-name{
+    top: -70px;
+    position: relative;
+}
