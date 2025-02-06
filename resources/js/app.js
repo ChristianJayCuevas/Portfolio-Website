@@ -6,6 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import VueAudioPlayer from '@liripeng/vue-audio-player'
 const appName = 'CJay';
 
 createInertiaApp({
@@ -19,6 +20,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(VueAudioPlayer)
             .mount(el);
     },
     progress: {

@@ -13,6 +13,14 @@ Route::get('/pokemon', function () {
     return Inertia::render('PokemonHome');
 })->name('pokemon');
 
+Route::get('/pokemon/{id}', function ($id) {
+    // Pass the Pokemon ID to the Vue page as a prop
+    return Inertia::render('PokemonPage', [
+        'pokemonId' => $id  // Pass the ID as a prop
+    ]);
+})->name('pokemon.page');
+
+
 // Route::get('/projects', function () {
 //     return Inertia::render('Projects');
 // })->name('projects');
