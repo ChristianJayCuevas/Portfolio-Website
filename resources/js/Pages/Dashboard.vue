@@ -305,9 +305,9 @@ import { Head } from '@inertiajs/vue3';
         <div class="main" id="main">
             <div class="left">
                 <h5>Hey, I am Jay</h5>
-                <h3>I aspire to be a <span>Software Engineer</span> and here is my portfolio</h3>
+                <h3>I am a <span>Software Engineer</span> and here is my portfolio</h3>
                 <p>
-                    Computer Engineering Student | Passionate Web Developer Exploring Laravel & VueJS | Anime & Novel 
+                    Computer Engineering Student | Web Developer (VueJS, Laravel, NextJS) | Anime & Novel 
                 </p>
                 <button @click="showGetInTouchPopup">Get In Touch</button>
             </div>

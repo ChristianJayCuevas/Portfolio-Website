@@ -23,7 +23,6 @@ const fetchPokemonData = async (id) => {
 
     const data = await response.json();
 
-    // Constructing a high-res URL for the shiny and gif images
     const baseGifUrl = data.sprites.versions['generation-v']['black-white'].animated.front_default;
     const highResGifUrl = baseGifUrl + '?w=1080&q=75';  // Add optimization parameters to URL
 
@@ -44,9 +43,8 @@ const fetchPokemonData = async (id) => {
   }
 };
 
-// Get the Pokemon ID from the page props and fetch the data
 onMounted(() => {
-  const pokemonId = props.pokemonId;  // Access the passed pokemonId from props
+  const pokemonId = props.pokemonId;  
   fetchPokemonData(pokemonId);
 });
 </script>
@@ -59,7 +57,7 @@ onMounted(() => {
         <img :src="imageType === 'normal' ? pokemon.image : imageType === 'shiny' ? pokemon.shinyImage : pokemon.gifImage" 
              :alt="pokemon.name" 
              :class="{'gif-image': imageType === 'gif'}" /> <!-- Add class for GIF images -->
-        <div class="image-options">
+        <div class="image-options" style="font-weight:bold; font-size: 1.2rem;">
           <label>
             <input type="radio" value="normal" v-model="imageType" /> Normal
           </label>

@@ -20,6 +20,10 @@ Route::get('/pokemon/{id}', function ($id) {
     ]);
 })->name('pokemon.page');
 
+Route::get('/qubedashboard', function() {
+    return Inertia::render('QubeDashboard');
+}
+)->name('qubedashboard');
 
 // Route::get('/projects', function () {
 //     return Inertia::render('Projects');
