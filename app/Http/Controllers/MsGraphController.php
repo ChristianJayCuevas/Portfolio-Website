@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\Session;
 class MsGraphController extends Controller
 {
     public function redirectToMicrosoft()
-    {
-        $query = http_build_query([
-            'client_id' => "9b9949fc-be7d-4735-8039-9d450b97e95a",
-            'response_type' => 'code',
-            'redirect_uri' => "https://christianjaycuevas.tech/msgraph/callback",
-            'response_mode' => 'query',
-            'scope' => 'offline_access Files.Read.All Sites.Read.All User.Read',
-            'state' => csrf_token()
-        ]);
+{
+    $query = http_build_query([
+        'client_id' => env('GRAPH_CLIENT_ID'),
+        'response_type' => 'code',
+        'redirect_uri' => env('GRAPH_REDIRECT_URI'),
+        'response_mode' => 'query',
+        'scope' => 'offline_access Files.Read.All Sites.Read.All User.Read',
+        'state' => csrf_token()
+    ]);
 
-        return redirect("https://login.microsoftonline.com/"."f693f673-ccdf-438c-bd35-bedcae189a22"."/oauth2/v2.0/authorize?$query");
-    }
+    return redirect("https://login.microsoftonline.com/" . env('GRAPH_TENANT_ID') . "/oauth2/v2.0/authorize?$query");
+}
 
     public function handleCallback(Request $request)
 {
