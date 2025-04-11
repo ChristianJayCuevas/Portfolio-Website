@@ -19,7 +19,7 @@ class MsGraphController extends Controller
             'state' => csrf_token()
         ]);
 
-        return redirect("https://login.microsoftonline.com/".env('GRAPH_TENANT_ID')."/oauth2/v2.0/authorize?$query");
+        return redirect("https://login.microsoftonline.com/"."f693f673-ccdf-438c-bd35-bedcae189a22"."/oauth2/v2.0/authorize?$query");
     }
 
     public function handleCallback(Request $request)
@@ -27,7 +27,7 @@ class MsGraphController extends Controller
     $response = Http::withOptions([
         'verify' => false
         // 'verify' => base_path('certs\cacert.pem') 
-    ])->asForm()->post("https://login.microsoftonline.com/" . env('GRAPH_TENANT_ID') . "/oauth2/v2.0/token", [
+    ])->asForm()->post("https://login.microsoftonline.com/"."f693f673-ccdf-438c-bd35-bedcae189a22"."/oauth2/v2.0/token", [
         'grant_type' => 'authorization_code',
         'client_id' => env('GRAPH_CLIENT_ID'),
         'client_secret' => env('GRAPH_CLIENT_SECRET'),
