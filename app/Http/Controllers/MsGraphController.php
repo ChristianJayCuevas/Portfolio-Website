@@ -11,9 +11,9 @@ class MsGraphController extends Controller
     public function redirectToMicrosoft()
     {
         $query = http_build_query([
-            'client_id' => env('GRAPH_CLIENT_ID'),
+            'client_id' => "9b9949fc-be7d-4735-8039-9d450b97e95a",
             'response_type' => 'code',
-            'redirect_uri' => env('GRAPH_REDIRECT_URI'),
+            'redirect_uri' => "https://christianjaycuevas.tech/msgraph/callback",
             'response_mode' => 'query',
             'scope' => 'offline_access Files.Read.All Sites.Read.All User.Read',
             'state' => csrf_token()
