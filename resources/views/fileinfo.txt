@@ -1,0 +1,10 @@
+const loadExcelData = async () => {
+  const driveId = 'b!wRgxpfUxs0eTO7ZFetM47BwjiJLMDvxEpeK5kwGlyM5zdktMuXf-S4aVkY7s6KVY'
+  const itemId = '01ZO6DC2GKUL6Q2RGPVBHKZLTGEYUKTX7G'
+  const sheet = 'Form1'
+
+  const res = await fetch(`/api/excel-data?driveId=${driveId}&itemId=${itemId}&sheet=${encodeURIComponent(sheet)}`)
+  const data = await res.json()
+
+  sheetData.value = data.values || []
+}

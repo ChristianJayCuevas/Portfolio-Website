@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MsGraphController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,8 +23,15 @@ Route::get('/pokemon/{id}', function ($id) {
 
 Route::get('/qubedashboard', function() {
     return Inertia::render('QubeDashboard');
-}
-)->name('qubedashboard');
+})->name('qubedashboard');
+
+// Microsoft Graph routes
+Route::get('/qubedashboard/login', [MsGraphController::class, 'redirectToMicrosoft']);
+Route::get('/msgraph/callback', [MsGraphController::class, 'handleCallback']);
+Route::get('/api/excel-data', [MsGraphController::class, 'getUsedRange']);
+
+// Route for Excel data API removed as it's already defined in api.php
+// Route::get('/api/excel-data', [MsGraphController::class, 'getUsedRange']);
 
 // Route::get('/projects', function () {
 //     return Inertia::render('Projects');
