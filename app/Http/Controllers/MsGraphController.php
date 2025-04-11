@@ -25,7 +25,8 @@ class MsGraphController extends Controller
     public function handleCallback(Request $request)
 {
     $response = Http::withOptions([
-        'verify' => base_path('certs\cacert.pem') 
+        'verify' => false
+        // 'verify' => base_path('certs\cacert.pem') 
     ])->asForm()->post("https://login.microsoftonline.com/" . env('GRAPH_TENANT_ID') . "/oauth2/v2.0/token", [
         'grant_type' => 'authorization_code',
         'client_id' => env('GRAPH_CLIENT_ID'),
