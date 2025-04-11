@@ -22,32 +22,45 @@ class MsGraphController extends Controller
     return redirect("https://login.microsoftonline.com/" . env('GRAPH_TENANT_ID') . "/oauth2/v2.0/authorize?$query");
 }
 
-    public function handleCallback(Request $request)
+public function handleCallback(Request $request)
 {
-    $response = Http::withOptions([
-        'verify' => false
-        // 'verify' => base_path('certs\cacert.pem') 
-    ])->asForm()->post("https://login.microsoftonline.com/"."f693f673-ccdf-438c-bd35-bedcae189a22"."/oauth2/v2.0/token", [
+    \Log::info('Received MS callback', [
+        'code' => $request->input('code'),
+        'params' => $request->all(),
+    ]);
+
+    if (!$request->has('code')) {
+        return response()->json([
+            'error' => 'Missing authorization code',
+            'details' => $request->all()
+        ], 400);
+    }
+
+    $response = Http::asForm()->withHeaders([
+        'Content-Type' => 'application/x-www-form-urlencoded',
+    ])->post("https://login.microsoftonline.com/" . env('GRAPH_TENANT_ID') . "/oauth2/v2.0/token", [
         'grant_type' => 'authorization_code',
         'client_id' => env('GRAPH_CLIENT_ID'),
         'client_secret' => env('GRAPH_CLIENT_SECRET'),
         'redirect_uri' => env('GRAPH_REDIRECT_URI'),
-        'code' => $request->code
+        'code' => $request->input('code'),
     ]);
 
     $tokenData = $response->json();
 
     if (isset($tokenData['access_token'])) {
-        // Store token in session
         Session::put('graph_token', $tokenData['access_token']);
-        return redirect('/qubedashboard'); // or your frontend page
+        return redirect('/qubedashboard');
     }
+
+    \Log::error('Token exchange failed', ['response' => $tokenData]);
 
     return response()->json([
         'error' => 'Token exchange failed',
         'details' => $tokenData
     ], 500);
 }
+
 //For pulling the Excel Sheet
 public function getUsedRange(Request $request)
 {
