@@ -47,7 +47,7 @@ class MsGraphController extends Controller
         'details' => $tokenData
     ], 500);
 }
-
+//For pulling the Excel Sheet
 public function getUsedRange(Request $request)
 {
     $token = Session::get('graph_token');
