@@ -10,6 +10,8 @@ const coordinatesData = ref([])
 const loadingExcel = ref(false)
 const errorExcel = ref(null)
 const lockerName = ref([])
+const downLockers = ref([])
+
 const fetchExcelData = async () => {
     loadingExcel.value = true
     errorExcel.value = null
@@ -28,31 +30,29 @@ const fetchExcelData = async () => {
         excelData.value = result.values || []
         coordinatesData.value = result2.values || []
 
-        // ✅ Convert coordinates into locker objects (from C2 to C44 and D2 to D44)
-        const newLockers = (coordinatesData.value || [])
-            .slice(1, 44)
-            .map((row, i) => {
-                const lat = parseFloat(row[2]);
-                const lng = parseFloat(row[3]);
-                return {
-                    id: `LK-${1001 + i}`,
-                    lat: isNaN(lat) ? null : lat,
-                    lng: isNaN(lng) ? null : lng,
-                    status: 'online',
-                    name: `Locker ${i + 1}`
-                };
-            })
-            .filter(locker => locker.lat !== null && locker.lng !== null);
-        
-        const lockerName = (coordinatesData.value || [])
+        const downLockerNames = (excelData.value || [])
+    .map(row => row[3])
+    .filter(name => name !== null && name !== undefined);
+
+    const newLockers = (coordinatesData.value || [])
         .slice(1, 44)
         .map((row, i) => {
-            const lockername = row[0];
+            const name = row[0];
+            const lat = parseFloat(row[2]);
+            const lng = parseFloat(row[3]);
+            const isDown = downLockerNames.includes(name);
+
             return {
-                name: lockername,
+                id: `LK-${1001 + i}`,
+                name: name || `Locker ${i + 1}`,
+                lat: isNaN(lat) ? null : lat,
+                lng: isNaN(lng) ? null : lng,
+                status: isDown ? 'offline' : 'online'
             };
         })
-        lockerName.value = lockerName.filter(locker => locker.name !== null);
+        .filter(locker => locker.lat !== null && locker.lng !== null); 
+
+    lockers.value = newLockers;
 
         lockers.value = newLockers;
         if (map && markersLayer) {
