@@ -30,18 +30,23 @@ const fetchExcelData = async () => {
 
         // ✅ Convert coordinates into locker objects (from C2 to C44 and D2 to D44)
         const newLockers = (coordinatesData.value || [])
-            .slice(1, 44) // rows 2 to 44 (1-based)
-            .map((row, i) => {
-                return {
-                    id: `LK-${1001 + i}`,
-                    lat: parseFloat(row[2]), // column C = index 2
-                    lng: parseFloat(row[3]), // column D = index 3
-                    status: 'online', // or determine from Excel if available
-                    name: `Locker ${i + 1}`
-                }
-            });
+    .slice(1, 44)
+    .map((row, i) => {
+        const lat = parseFloat(row[2]);
+        const lng = parseFloat(row[3]);
+        return {
+            id: `LK-${1001 + i}`,
+            lat: isNaN(lat) ? 0 : lat,
+            lng: isNaN(lng) ? 0 : lng,
+            status: 'online',
+            name: `Locker ${i + 1}`
+        }
+    });
 
         lockers.value = newLockers;
+        if (map && markersLayer) {
+    addLockerMarkers(); // ✅ add this here
+}
     } catch (err) {
         errorExcel.value = 'Failed to load Excel data'
     } finally {
