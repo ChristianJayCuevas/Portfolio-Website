@@ -36,12 +36,13 @@ const fetchExcelData = async () => {
         const lng = parseFloat(row[3]);
         return {
             id: `LK-${1001 + i}`,
-            lat: isNaN(lat) ? 0 : lat,
-            lng: isNaN(lng) ? 0 : lng,
+            lat: isNaN(lat) ? null : lat,
+            lng: isNaN(lng) ? null : lng,
             status: 'online',
             name: `Locker ${i + 1}`
-        }
-    });
+        };
+    })
+    .filter(locker => locker.lat !== null && locker.lng !== null);
 
         lockers.value = newLockers;
         if (map && markersLayer) {
@@ -226,8 +227,16 @@ function initMap() {
     scrollWheelZoom: true
 }).setView([14.5995, 120.9842], 14); // initial fallback view
 
-const bounds = L.latLngBounds(lockers.value.map(locker => [locker.lat, locker.lng]));
-map.fitBounds(bounds, { padding: [30, 30] });
+const validCoords = lockers.value
+    .filter(locker => typeof locker.lat === 'number' && typeof locker.lng === 'number' && !isNaN(locker.lat) && !isNaN(locker.lng));
+
+if (validCoords.length > 0) {
+    const bounds = L.latLngBounds(validCoords.map(locker => [locker.lat, locker.lng]));
+    map.fitBounds(bounds, { padding: [30, 30] });
+} else {
+    // fallback
+    map.setView([14.5995, 120.9842], 14);
+}
             
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                 maxZoom: 19
