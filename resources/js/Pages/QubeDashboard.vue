@@ -221,17 +221,13 @@ function initMap() {
         if (!map) {
             await nextTick();
             
-            const centerLat = lockers.value.length ? 
-                lockers.value.reduce((sum, locker) => sum + locker.lat, 0) / lockers.value.length : 
-                14.5995;
-            const centerLng = lockers.value.length ? 
-                lockers.value.reduce((sum, locker) => sum + locker.lng, 0) / lockers.value.length : 
-                120.9842;
-            
             map = L.map('lockerMap', {
-                zoomControl: true,
-                scrollWheelZoom: true
-            }).setView([centerLat, centerLng], 14);
+    zoomControl: true,
+    scrollWheelZoom: true
+}).setView([14.5995, 120.9842], 14); // initial fallback view
+
+const bounds = L.latLngBounds(lockers.value.map(locker => [locker.lat, locker.lng]));
+map.fitBounds(bounds, { padding: [30, 30] });
             
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                 maxZoom: 19
