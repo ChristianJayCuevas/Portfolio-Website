@@ -17,7 +17,7 @@ const fetchExcelData = async () => {
         const driveId = 'b!wRgxpfUxs0eTO7ZFetM47BwjiJLMDvxEpeK5kwGlyM5zdktMuXf-S4aVkY7s6KVY'
         const itemId = '01ZO6DC2GKUL6Q2RGPVBHKZLTGEYUKTX7G'
         const sheet = 'Form1'
-        const coordinates = 'QUBE%20CODES'
+        const coordinates = 'QUBE CODES'
 
         const response = await fetch(`/api/excel-data?driveId=${driveId}&itemId=${itemId}&sheet=${encodeURIComponent(sheet)}`)
         const response2 = await fetch(`/api/excel-data?driveId=${driveId}&itemId=${itemId}&sheet=${encodeURIComponent(coordinates)}`)
@@ -25,15 +25,29 @@ const fetchExcelData = async () => {
         const result = await response.json()
         const result2 = await response2.json()
 
-        coordinatesData.value = result2.values || []
         excelData.value = result.values || []
+        coordinatesData.value = result2.values || []
+
+        // ✅ Convert coordinates into locker objects (from C2 to C44 and D2 to D44)
+        const newLockers = (coordinatesData.value || [])
+            .slice(1, 44) // rows 2 to 44 (1-based)
+            .map((row, i) => {
+                return {
+                    id: `LK-${1001 + i}`,
+                    lat: parseFloat(row[2]), // column C = index 2
+                    lng: parseFloat(row[3]), // column D = index 3
+                    status: 'online', // or determine from Excel if available
+                    name: `Locker ${i + 1}`
+                }
+            });
+
+        lockers.value = newLockers;
     } catch (err) {
         errorExcel.value = 'Failed to load Excel data'
     } finally {
         loadingExcel.value = false
     }
 }
-
 // Chart configurations
 const dailyRevenueOptions = ref({
     chart: {
@@ -192,13 +206,7 @@ const lockerStatusData = ref([
 // Map data
 const mapLoaded = ref(false);
 const mapContainer = ref(null);
-const lockers = ref([
-    { id: 'LK-1001', lat: 14.5995, lng: 120.9842, status: 'online', name: 'Main Building A' },
-    { id: 'LK-1002', lat: 14.6005, lng: 120.9862, status: 'online', name: 'North Wing' },
-    { id: 'LK-1003', lat: 14.5985, lng: 120.9822, status: 'offline', name: 'South Building' },
-    { id: 'LK-1004', lat: 14.6015, lng: 120.9852, status: 'online', name: 'East Campus' },
-    { id: 'LK-1005', lat: 14.5975, lng: 120.9832, status: 'online', name: 'West Wing' },
-]);
+const lockers = ref([]);
 
 let map = null;
 let markersLayer = null;

@@ -82,7 +82,7 @@ public function getUsedRange(Request $request)
 
     try {
         $response = Http::withOptions([
-            'verify' => base_path('certs/cacert.pem'), // 👈 path to your cert file
+            'verify' => base_path('certs/cacert.pem'),
         ])->withToken($token)->get($graphUrl);
 
         if ($response->successful()) {
