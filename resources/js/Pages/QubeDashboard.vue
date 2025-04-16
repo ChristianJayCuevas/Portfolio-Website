@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue';
 import QubeAnalyticsLayout from '@/Layouts/QubeAnalyticsLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import VueApexCharts from 'vue3-apexcharts';
@@ -54,7 +54,21 @@ const fetchExcelData = async () => {
         loadingExcel.value = false
     }
 }
-// Chart configurations
+watch(lockers, (newLockers) => {
+    if (map && newLockers.length > 0) {
+        const validCoords = newLockers.filter(locker =>
+            typeof locker.lat === 'number' &&
+            typeof locker.lng === 'number' &&
+            !isNaN(locker.lat) &&
+            !isNaN(locker.lng)
+        );
+
+        if (validCoords.length > 0) {
+            const bounds = L.latLngBounds(validCoords.map(locker => [locker.lat, locker.lng]));
+            map.fitBounds(bounds, { padding: [30, 30] });
+        }
+    }
+});
 const dailyRevenueOptions = ref({
     chart: {
         type: 'area',
