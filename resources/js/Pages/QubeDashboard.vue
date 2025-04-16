@@ -54,21 +54,7 @@ const fetchExcelData = async () => {
         loadingExcel.value = false
     }
 }
-watch(lockers, (newLockers) => {
-    if (map && newLockers.length > 0) {
-        const validCoords = newLockers.filter(locker =>
-            typeof locker.lat === 'number' &&
-            typeof locker.lng === 'number' &&
-            !isNaN(locker.lat) &&
-            !isNaN(locker.lng)
-        );
 
-        if (validCoords.length > 0) {
-            const bounds = L.latLngBounds(validCoords.map(locker => [locker.lat, locker.lng]));
-            map.fitBounds(bounds, { padding: [30, 30] });
-        }
-    }
-});
 const dailyRevenueOptions = ref({
     chart: {
         type: 'area',
@@ -315,7 +301,21 @@ function addLockerMarkers() {
         });
     });
 }
+watch(lockers, (newLockers) => {
+    if (map && newLockers.length > 0) {
+        const validCoords = newLockers.filter(locker =>
+            typeof locker.lat === 'number' &&
+            typeof locker.lng === 'number' &&
+            !isNaN(locker.lat) &&
+            !isNaN(locker.lng)
+        );
 
+        if (validCoords.length > 0) {
+            const bounds = L.latLngBounds(validCoords.map(locker => [locker.lat, locker.lng]));
+            map.fitBounds(bounds, { padding: [30, 30] });
+        }
+    }
+});
 function updateLockerData(newLockerData) {
     lockers.value = newLockerData;
     if (map && markersLayer) {
